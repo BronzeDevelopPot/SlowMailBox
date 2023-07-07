@@ -1,11 +1,12 @@
-import './App.css'
+import LoginPage from './Component/LoginPage/LoginPage'
+import styles from './App.module.scss'
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>SlowMailBox</h1>
+    <div className={styles.App}>
+      <LoginPage />
     </div>
   )
 }
 
-export default App
+export default App;

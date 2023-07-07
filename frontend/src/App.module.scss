@@ -1,1 +1,13 @@
-.App {}
+body {
+  margin: 0px;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+
+  width: 500px;
+  height: 882px;
+  background-color: beige;
+}
