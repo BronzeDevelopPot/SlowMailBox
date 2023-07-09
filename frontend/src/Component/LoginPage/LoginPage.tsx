@@ -1,4 +1,5 @@
-import styles from "../../Styles/_LoginPage.module.scss";
+import { Link } from "react-router-dom";
+import styles from "../../Styles/_loginPage.module.scss";
 
 const LoginPage = () => {
   return (
@@ -14,6 +15,10 @@ const LoginPage = () => {
           <img src="/src/Assets/kakaologin.png"></img>
         </div>
       </a>
+      {/* 임시 main page button */}
+      <Link to="/main">
+        <button>main page</button>  
+      </Link>
     </div>
   );
 };

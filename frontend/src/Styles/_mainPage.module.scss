@@ -1,0 +1,51 @@
+.main_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        margin-top: 40px;
+
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .mail_box {
+        background-image: url("src/Assets/mailbox.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    
+        width: 330px;
+        height: 520px;
+        margin-top: 50px;
+      }
+
+      .write_button {
+        margin-top: 18px;
+        margin-left: auto;
+
+        width: 97px;
+        height: 36px;
+
+        font-size: 14px;
+        font-weight: bold;
+
+        border: 2px solid rgb(255, 240, 198);
+        border-radius: 7px;
+        background-color: white;
+      }
+
+      .share_button {
+        margin-top: 20px;
+
+        width: 400px;
+        height: 50px;
+
+        font-size: 20px;
+        font-weight: bold;
+        
+        border: 2px solid rgb(255, 240, 198);
+        border-radius: 7px;
+        background-color: white;
+      }
+}
