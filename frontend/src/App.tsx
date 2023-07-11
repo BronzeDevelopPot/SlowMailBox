@@ -1,5 +1,6 @@
 import LoginPage from './Component/LoginPage/LoginPage';
 import MainPage from './Component/MainPage/MainPage';
+import LetterPage from './Component/LetterPage/LetterPage';
 import styles from './App.module.scss';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -11,6 +12,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
           <Route path="/main" element={<MainPage />}></Route>
+          <Route path="/letter" element={<LetterPage />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
