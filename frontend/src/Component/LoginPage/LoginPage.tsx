@@ -12,7 +12,7 @@ const LoginPage = () => {
       <a>
         {/* href로 카카오 연결 */}
         <div className={styles.kakao_login_button}>
-          <img src="/src/Assets/kakaologin.png"></img>
+          <img src="/src/Assets/kakaologin.png" />
         </div>
       </a>
       {/* 임시 main page button */}

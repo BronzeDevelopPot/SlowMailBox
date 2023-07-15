@@ -1,49 +1,49 @@
 .letter_page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    .letter_image {
-        background-image: url("src/Assets/letter01.png");
-        background-repeat: no-repeat;
-        background-size: contain;
+  .letter_image {
+    background-image: url("src/Assets/letter01.png");
+    background-repeat: no-repeat;
+    background-size: contain;
 
-        width: 440px;
-        height: 700px;
+    width: 440px;
+    height: 700px;
 
-        margin-top: 50px;
+    margin-top: 50px;
 
-        .textarea_style {
-            padding-top: 43px;
-            margin-left: 45px;
+    .textarea_style {
+      padding-top: 43px;
+      margin-left: 45px;
 
-            width: 350px;
-            height: 600px;
+      width: 350px;
+      height: 600px;
 
-            resize: none;
-            outline: none;
-            overflow: hidden;
+      resize: none;
+      outline: none;
+      overflow: hidden;
 
-            border: none;
-            background-color: transparent;
+      border: none;
+      background-color: transparent;
 
-            font-size: 20px;
-            line-height: 42px;
-        }
+      font-size: 20px;
+      line-height: 42px;
     }
+  }
 
-    .send_button {
-        margin-top: 18px;
-        margin-left: 350px;
+  .send_button {
+    margin-top: 18px;
+    margin-left: 350px;
 
-        width: 70px;
-        height: 36px;
+    width: 70px;
+    height: 36px;
 
-        font-size: 15px;
-        font-weight: bold;
+    font-size: 15px;
+    font-weight: bold;
 
-        border: 2px solid rgb(255, 240, 198);
-        border-radius: 7px;
-        background-color: white;
-    }
+    border: 2px solid rgb(255, 240, 198);
+    border-radius: 7px;
+    background-color: white;
+  }
 }
