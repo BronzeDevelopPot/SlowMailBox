@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import styles from "../../../Styles/_modalPage.module.scss";
 
 const ModalPage = (_props: any) => {
@@ -10,10 +11,28 @@ const ModalPage = (_props: any) => {
     setName(e.target.value);
   };
 
+  const getStringDate = (n: number): string => {
+    if (n < 10) {
+      return "0" + String(n);
+    } else {
+      return String(n);
+    }
+  };
+
   const submit = () => {
     setModal(false);
 
     // *** axios.post 구현 ***
+    axios.post("보낼 주소~~", {
+      text: _props.inputText,
+      name: name,
+      year: "2023",
+      todayMonth: getStringDate(todayMonth),
+      todayDate: getStringDate(todayDate),
+      month: getStringDate(selectedMonth),
+      date: getStringDate(selectedDate),
+      monthDif: String(selectedMonth - todayMonth),
+    });
   };
 
   const today: Date = new Date();
