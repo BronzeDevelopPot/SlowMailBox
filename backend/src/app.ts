@@ -1,15 +1,16 @@
-const admin = require("firebase-admin");
-const firestore = require("firebase-admin/firestore");
-const serviceAccount = require("../config");
-const cors = require("cors");
-const app = require("express");
+import express from "express";
+import { router } from "./Router/routes";
+import { sessionConfig } from './Config/sessionConfig';
+import { database } from "./Config/firebaseConfig";
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
-});
+const app = express();
+const PORT = process.env.PORT;
 
-const database = firestore.getFirestore();
+/* kakao login */
+app.use(sessionConfig);
+app.use(router);
 
+/* firebase test code */
 test();
 
 async function test() {
@@ -19,8 +20,6 @@ async function test() {
     });
 }
 
-app.use(cors());
-
-app.listen('3000', () => {
+app.listen(PORT, () => {
     console.log(`Server listening on port 3000`);
 });

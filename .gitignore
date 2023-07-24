@@ -8,6 +8,7 @@ lerna-debug.log*
 
 node_modules
 config.json
+.env
 dist
 dist-ssr
 *.local
