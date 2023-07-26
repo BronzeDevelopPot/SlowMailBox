@@ -23,7 +23,7 @@ const ModalPage = (_props: any) => {
     try {
       const response = await axios.get("/api/user");
 
-      const postResponse = await axios.post("/api/send", {
+      await axios.post("/api/send", {
         text: _props.inputText,
         from: fromName,
         to: response.data.name,
@@ -37,7 +37,6 @@ const ModalPage = (_props: any) => {
       });
 
       setModal(false);
-      console.log(postResponse);
     } catch (e) {
       console.log(e);
     }
