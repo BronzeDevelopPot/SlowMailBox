@@ -1,5 +1,5 @@
-import { initializeApp, getApp, FirebaseApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp, getApp, FirebaseApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 const serviceAccount = require("../../config");
 
