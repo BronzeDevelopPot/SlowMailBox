@@ -18,9 +18,13 @@
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts"
   },
   "dependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
     "axios": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express-session": "^1.17.3",
+    "firebase": "^10.1.0",
     "firebase-admin": "^11.10.1",
     "qs": "^6.11.2"
   }

@@ -1,8 +1,14 @@
-import admin from "firebase-admin";
+import { initializeApp, getApp, FirebaseApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+
 const serviceAccount = require("../../config");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
-});
+export let app: FirebaseApp;
 
-export const database = admin.firestore();
+try {
+  app = getApp("app");
+} catch (e) {
+  app = initializeApp(serviceAccount, "app");
+}
+
+export const database = getFirestore(app);
