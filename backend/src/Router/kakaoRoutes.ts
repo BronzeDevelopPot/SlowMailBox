@@ -13,12 +13,6 @@ const kakao = {
   REDIRECT_URI: process.env.REDIRECT_URI,
 };
 
-/* kakao login page 연결 */
-kakaoRouter.get("/oauth/callback", (req: Request, res: Response) => {
-  const kakaoAuthURL = `https://kauth.kakao.com/oauth/authorize?client_id=${kakao.CLIENT_ID}&redirect_uri=${kakao.REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
-  res.redirect(kakaoAuthURL);
-});
-
 /* login 이후 나타나는 callback page */
 kakaoRouter.get("/oauth/callback/kakao", async (req: Request, res: Response) => {
   /* access token 발급 */
