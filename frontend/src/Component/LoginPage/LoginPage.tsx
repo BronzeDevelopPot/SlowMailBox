@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { KAKAO_AUTH_URL } from "./Auth";
 import styles from "../../Styles/_loginPage.module.scss";
 
@@ -9,14 +8,10 @@ const LoginPage = () => {
       <div className={styles.mail_box} />
       <div className={styles.sign_up_title}>느린 우체통 만들기</div>
       <a href={KAKAO_AUTH_URL}>
-          <div className={styles.kakao_login_button} >
-            <img src="/src/Assets/kakaologin.png" />
-          </div>
+        <div className={styles.kakao_login_button}>
+          <img src="/src/Assets/kakaologin.png" />
+        </div>
       </a>
-      {/* 임시 main page button */}
-      <Link to="/main">
-        <button>main page</button>  
-      </Link>
     </div>
   );
 };
