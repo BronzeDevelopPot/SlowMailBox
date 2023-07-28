@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import { saveLetter } from "../Firebase/letters";
+import { saveLetter } from "../Firebase/mailbox";
 
 export const letterRouter = Router();
 
