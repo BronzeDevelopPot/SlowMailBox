@@ -40,7 +40,7 @@ kakaoRouter.get("/oauth/callback/kakao", async (req: Request, res: Response) => 
   let user: any;
   try {
     user = await axios({
-      method: "get",
+      method: "GET",
       url: "https://kapi.kakao.com/v2/user/me",
       headers: {
         Authorization: `Bearer ${token.data.access_token}`,
