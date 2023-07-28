@@ -138,13 +138,16 @@ const ModalPage = (_props: any) => {
       ) : (
         <div className={styles.modal_container}>
           <div className={styles.close_button}>
-            <Link to="/" style={{ textDecoration: "none" }}>
+            <Link to="/main" style={{ textDecoration: "none" }}>
               X
             </Link>
           </div>
           <div className={styles.complete_ment}>편지 전송이 완료되었습니다!</div>
           <div className={styles.join_ment}>나도 추억의 우체통을 만들고 싶다면?</div>
-          <img src="./src/Assets/kakaologin_start.png" />
+          {/* login page로 이동하게 해 둔 상태 (고민해 봐야 함) */}
+          <Link to="/">
+            <img src="./src/Assets/kakaologin_start.png" />
+          </Link>
         </div>
       )}
     </div>
