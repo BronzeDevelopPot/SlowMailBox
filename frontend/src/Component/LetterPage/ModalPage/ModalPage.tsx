@@ -18,6 +18,9 @@ const ModalPage = (_props: any) => {
       return String(n);
     }
   };
+  const today: Date = new Date();
+  const todayMonth: number = today.getMonth() + 1;
+  const todayDate: number = today.getDate();
 
   const submit = async () => {
     try {
@@ -41,10 +44,6 @@ const ModalPage = (_props: any) => {
       console.log(e);
     }
   };
-
-  const today: Date = new Date();
-  const todayDate: number = today.getDate();
-  const todayMonth: number = today.getMonth() + 1;
 
   // monthList
   const monthList: number[] = [];
@@ -91,7 +90,12 @@ const ModalPage = (_props: any) => {
   } else {
     lastDayOfMonth = 31;
   }
-  dateArr = [...Array(lastDayOfMonth - todayDate).keys()].map((i) => todayDate + i + 1);
+
+  if (todayDate === lastDayOfMonth) {
+    dateArr = [todayDate];
+  } else {
+    dateArr = [...Array(lastDayOfMonth - todayDate).keys()].map((i) => todayDate + i + 1);
+  }
 
   const [dateList, setDateList] = useState<number[]>(dateArr);
   const [selectedDate, setSelectedDate] = useState<number>(dateList[0]);
