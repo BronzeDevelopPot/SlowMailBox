@@ -1,4 +1,5 @@
 import { KAKAO_AUTH_URL } from "./Auth";
+import { Link } from "react-router-dom";
 import styles from "../../Styles/_loginPage.module.scss";
 
 const LoginPage = () => {
@@ -12,6 +13,10 @@ const LoginPage = () => {
           <img src="/src/Assets/kakaologin.png" />
         </div>
       </a>
+      {/* 임시 main page button */}
+      <Link to="/main">
+        <button>main page</button>
+      </Link>
     </div>
   );
 };

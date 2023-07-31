@@ -3,6 +3,8 @@
   flex-direction: column;
   align-items: center;
 
+  margin-top: 20px;
+
   .title {
     margin-top: 40px;
 
@@ -17,7 +19,8 @@
 
     width: 330px;
     height: 520px;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 
   .link_container {
@@ -40,7 +43,7 @@
   }
 
   .share_button {
-    margin-top: 20px;
+    margin-top: 15px;
 
     width: 400px;
     height: 50px;

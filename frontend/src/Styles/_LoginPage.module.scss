@@ -1,7 +1,9 @@
 .login_page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 20px;
 
   .title {
     margin-top: 40px;
@@ -18,8 +20,8 @@
     width: 330px;
     height: 520px;
 
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 40px;
+    margin-bottom: 35px;
   }
 
   .sign_up_title {
@@ -31,7 +33,7 @@
     width: 100%;
     height: 100%;
   }
-  
+
   .kakao_login_button {
     width: 400px;
   }
