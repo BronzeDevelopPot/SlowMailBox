@@ -40,3 +40,12 @@ export const saveLetter = async (reqBody: any) => {
     console.log(`편지 저장 실패: ${e}`);
   }
 };
+
+export const getLetter = async (reqParams: any) => {
+  const { userName } = reqParams;
+
+  const letterRef = doc(collection(database, "slowmailbox", "mailbox", "letters"), userName);
+  const letterDoc = await getDoc(letterRef);
+
+  return letterDoc;
+}
