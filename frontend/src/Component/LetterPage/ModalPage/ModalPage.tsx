@@ -11,13 +11,6 @@ const ModalPage = (_props: any) => {
     setFromName(e.target.value);
   };
 
-  const getStringDate = (n: number): string => {
-    if (n < 10) {
-      return "0" + String(n);
-    } else {
-      return String(n);
-    }
-  };
   const today: Date = new Date();
   const todayMonth: number = today.getMonth() + 1;
   const todayDate: number = today.getDate();
@@ -31,12 +24,9 @@ const ModalPage = (_props: any) => {
         from: fromName,
         to: response.data.name,
         toId: response.data._id,
-        year: "2023",
-        todayMonth: getStringDate(todayMonth),
-        todayDate: getStringDate(todayDate),
-        month: getStringDate(selectedMonth),
-        date: getStringDate(selectedDate),
-        monthDif: String(selectedMonth - todayMonth),
+        sendDate: Number(`${2023}0${todayMonth}${todayDate}`),
+        arriveDate: Number(`${2023}0${selectedMonth}${selectedDate}`),
+        monthDif: selectedMonth - todayMonth,
       });
 
       setModal(false);

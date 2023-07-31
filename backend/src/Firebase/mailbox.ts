@@ -4,11 +4,11 @@ import { setTotalLetter } from "./counter";
 
 export const saveLetter = async (reqBody: any) => {
   try {
-    const { year, todayMonth, todayDate, month, date, text, from, to, toId, monthDif } = reqBody;
+    const { text, from, to, toId, sendDate, arriveDate, monthDif } = reqBody;
 
     const letterData = {
-      sendDate: year + todayMonth + todayDate,
-      arriveDate: year + month + date,
+      sendDate: sendDate,
+      arriveDate: arriveDate,
       text: text,
       from: from,
       monthDif: monthDif,
