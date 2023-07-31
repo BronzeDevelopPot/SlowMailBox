@@ -21,6 +21,35 @@
     height: 520px;
     margin-top: 40px;
     margin-bottom: 20px;
+
+    display: flex;
+    justify-content: center;
+
+    .post_box {
+      margin-top: 124px;
+      width: 240px;
+      height: 245px;
+
+      .envelope_box {
+        width: 270px;
+        height: 60px;
+        margin-bottom: 32px;
+
+        display: flex;
+        flex-direction: row;
+
+        .envelope_img {
+          width: 36px;
+          position: relative;
+          margin-right: 15px;
+
+          img {
+            width: 100%;
+            position: absolute;
+          }
+        }
+      }
+    }
   }
 
   .link_container {
