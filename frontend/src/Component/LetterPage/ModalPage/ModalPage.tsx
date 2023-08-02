@@ -58,7 +58,9 @@ const ModalPage = (_props: any) => {
         lastDayOfMonth = 31;
       }
 
-      const dateList = [...Array(lastDayOfMonth - todayDate).keys()].map((i) => todayDate + i + 1);
+      const dateList = [...Array(lastDayOfMonth - todayDate).keys()].map(
+        (i) => todayDate + i + 1
+      );
       setDateList(dateList);
     } else if (selectedValue == 2) {
       setDateList([...Array(28).keys()].map((i) => i + 1));
@@ -84,7 +86,9 @@ const ModalPage = (_props: any) => {
   if (todayDate === lastDayOfMonth) {
     dateArr = [todayDate];
   } else {
-    dateArr = [...Array(lastDayOfMonth - todayDate).keys()].map((i) => todayDate + i + 1);
+    dateArr = [...Array(lastDayOfMonth - todayDate).keys()].map(
+      (i) => todayDate + i
+    );
   }
 
   const [dateList, setDateList] = useState<number[]>(dateArr);
@@ -98,7 +102,12 @@ const ModalPage = (_props: any) => {
       {modal ? (
         <div className={styles.modal_container}>
           <div className={styles.nickname_ment}>닉네임을 입력하세요!</div>
-          <input type="text" className={styles.nickname} value={fromName} onChange={onHandleName} />
+          <input
+            type="text"
+            className={styles.nickname}
+            value={fromName}
+            onChange={onHandleName}
+          />
           <div className={styles.date_ment}>보낼 날짜를 선택해주세요!</div>
           <div className={styles.date_select}>
             <select name="year">
@@ -109,8 +118,7 @@ const ModalPage = (_props: any) => {
             <select name="month" onChange={onHandleMonth} value={selectedMonth}>
               {monthList.map((el) => (
                 <option key={el} value={el}>
-                  {" "}
-                  {el}{" "}
+                  {el}
                 </option>
               ))}
             </select>
@@ -119,8 +127,7 @@ const ModalPage = (_props: any) => {
             <select name="date" onChange={onHandleDate} value={selectedDate}>
               {dateList.map((el) => (
                 <option key={el} value={el}>
-                  {" "}
-                  {el}{" "}
+                  {el}
                 </option>
               ))}
             </select>
@@ -136,8 +143,12 @@ const ModalPage = (_props: any) => {
               X
             </Link>
           </div>
-          <div className={styles.complete_ment}>편지 전송이 완료되었습니다!</div>
-          <div className={styles.join_ment}>나도 추억의 우체통을 만들고 싶다면?</div>
+          <div className={styles.complete_ment}>
+            편지 전송이 완료되었습니다!
+          </div>
+          <div className={styles.join_ment}>
+            나도 추억의 우체통을 만들고 싶다면?
+          </div>
           {/* login page로 이동하게 해 둔 상태 (고민해 봐야 함) */}
           <Link to="/">
             <img src="./src/Assets/kakaologin_start.png" />

@@ -5,7 +5,13 @@ import styles from "../../Styles/_mainPage.module.scss";
 
 const MainPage = () => {
   const [name, setName] = useState<string>("");
-  const [monthDifArray, setMonthDifArray] = useState<number[]>([]);
+  const [monthDifArr, setMonthDifArr] = useState<number[]>([]);
+  const [arriveDateArr, setArriveDateArr] = useState<number[]>([]);
+  const [alarmOn, setAlarmOn] = useState<boolean>(false);
+
+  const todayMonth: number = new Date().getMonth() + 1;
+  const todayDate: number = new Date().getDate();
+  const today: number = Number(`${2023}${todayMonth}${todayDate}`);
 
   const getLetter = async () => {
     try {
@@ -15,8 +21,11 @@ const MainPage = () => {
 
       const letterResponse = await axios.get(`/api/letter/${userName}`);
       const letterData = letterResponse.data.letter;
-      setMonthDifArray(
+      setMonthDifArr(
         letterData.map((item: { monthDif: number }) => item.monthDif)
+      );
+      setArriveDateArr(
+        letterData.map((item: { arriveDate: number }) => item.arriveDate)
       );
 
       return letterData;
@@ -35,11 +44,31 @@ const MainPage = () => {
       }
     };
     mailbox();
-  }, []);
+  },[]);
+
+  useEffect(() => {
+    const letterIndex = async () => {
+      for (let index = 0; index < arriveDateArr.length; index++) {
+        const value = arriveDateArr[index];
+        if (value == today) {
+          setAlarmOn(true);
+          try {
+            await axios.post("/api/index", {
+              index: index,
+              userName: name,
+            });
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      }
+    };
+    letterIndex();
+  }, [arriveDateArr]);
 
   const Envelope = (monthDif: number) => {
-    for (let i = 0; i < monthDifArray.length; i++) {
-      if (monthDifArray[i] == monthDif) {
+    for (let i = 0; i < monthDifArr.length; i++) {
+      if (monthDifArr[i] == monthDif) {
         return <img src="/src/Assets/envelope_column.png" />;
       }
     }
@@ -47,6 +76,11 @@ const MainPage = () => {
 
   return (
     <div className={styles.main_page}>
+      {alarmOn ? (
+        <img src="/src/Assets/alarmOn.png" onClick={() => setAlarmOn(false)} />
+      ) : (
+        <img src="/src/Assets/alarmOff.png" />
+      )}
       <span className={styles.title}>{name}님의 우체통</span>
       <div className={styles.mail_box}>
         <div className={styles.post_box}>
