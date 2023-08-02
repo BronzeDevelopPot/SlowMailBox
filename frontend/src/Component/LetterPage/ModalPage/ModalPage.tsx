@@ -24,8 +24,8 @@ const ModalPage = (_props: any) => {
         from: fromName,
         to: response.data.name,
         toId: response.data._id,
-        sendDate: Number(`${2023}0${todayMonth}${todayDate}`),
-        arriveDate: Number(`${2023}0${selectedMonth}${selectedDate}`),
+        sendDate: Number(`${2023}${todayMonth}${todayDate}`),
+        arriveDate: Number(`${2023}${selectedMonth}${selectedDate}`),
         monthDif: selectedMonth - todayMonth,
       });
 
