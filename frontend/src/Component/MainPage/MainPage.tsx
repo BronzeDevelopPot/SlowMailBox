@@ -22,8 +22,12 @@ const MainPage = () => {
       const letterResponse = await axios.get(`/api/letter/${userName}`);
       const letterData = letterResponse.data.letter;
 
-      setMonthDifArr(letterData.map((item: { monthDif: number }) => item.monthDif));
-      setArriveDateArr(letterData.map((item: { arriveDate: number }) => item.arriveDate));
+      setMonthDifArr(
+        letterData.map((item: { monthDif: number }) => item.monthDif)
+      );
+      setArriveDateArr(
+        letterData.map((item: { arriveDate: number }) => item.arriveDate)
+      );
 
       return letterData;
     } catch (error) {
@@ -46,7 +50,7 @@ const MainPage = () => {
   useEffect(() => {
     const letterIndex = async () => {
       for (let index = 0; index < arriveDateArr.length; index++) {
-        const value = arriveDateArr[index];
+        const value: number = arriveDateArr[index];
         if (value == today) {
           setAlarmOn(true);
           try {
@@ -73,11 +77,21 @@ const MainPage = () => {
 
   return (
     <div className={styles.main_page}>
-      {alarmOn ? (
-        <img src="/src/Assets/alarmOn.png" onClick={() => setAlarmOn(false)} />
-      ) : (
-        <img src="/src/Assets/alarmOff.png" />
-      )}
+      <div className={styles.alarm_container}>
+        {alarmOn ? (
+          <Link to="/arrive">
+            <img
+              src="/src/Assets/alarmOn.png"
+              className={styles.alarm}
+              onClick={() => setAlarmOn(false)}
+            />
+          </Link>
+        ) : (
+          <Link to="/arrive">
+            <img src="/src/Assets/alarmOff.png" className={styles.alarm} />
+          </Link>
+        )}
+      </div>
       <span className={styles.title}>{name}님의 우체통</span>
       <div className={styles.mail_box}>
         <div className={styles.post_box}>
@@ -104,7 +118,9 @@ const MainPage = () => {
           <button className={styles.write_button}>편지 남기기</button>
         </Link>
       </div>
-      <button className={styles.share_button}>내 우체통 공유하기 (Link 복사)</button>
+      <button className={styles.share_button}>
+        내 우체통 공유하기 (Link 복사)
+      </button>
     </div>
   );
 };
