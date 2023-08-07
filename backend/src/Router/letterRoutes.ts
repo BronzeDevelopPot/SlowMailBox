@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { database } from "../Config/firebaseConfig";
-import { doc, collection, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, collection, getDoc, updateDoc } from "firebase/firestore";
 import { getArriveLetter } from "../Firebase/arrive";
 import { getLetter } from "../Firebase/mailbox";
 import { saveLetter } from "../Firebase/mailbox";
@@ -37,21 +37,25 @@ letterRouter.post("/api/index", async (req: Request, res: Response) => {
   try {
     const letterIndex = req.body.index;
     const userName = req.body.userName;
-    
+
     const letterRef = doc(collection(database, "slowmailbox", "mailbox", "letters"), userName);
     const letterDoc = await getDoc(letterRef);
-    
+
     const letterData = letterDoc.data()?.letter || [];
-        
+    const newLetter = letterData[letterIndex];
+
     const arriveRef = doc(collection(database, "slowmailbox", "arrive", "letters"), userName);
-    await setDoc(arriveRef, { letter: [letterData[letterIndex]] });
-    
+
+    const arriveDoc = await getDoc(arriveRef);
+    const currentletter = arriveDoc.data()?.letter || [];
+
+    await updateDoc(arriveRef, { letter: [...currentletter, newLetter] });
+
     if (letterData.length > letterIndex) {
       letterData.splice(letterIndex, 1);
     }
-    
+
     await updateDoc(letterRef, { letter: letterData });
-    
   } catch (e) {
     console.log(e);
     res.status(500).json({ e: "인덱스에 해당하는 편지를 조회하는 데 실패했습니다." });
