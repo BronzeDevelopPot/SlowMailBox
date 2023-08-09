@@ -49,19 +49,22 @@ const MainPage = () => {
 
   useEffect(() => {
     const letterIndex = async () => {
+      const indexArray: number[] = [];
+
       for (let index = 0; index < arriveDateArr.length; index++) {
         const value: number = arriveDateArr[index];
         if (value == today) {
           setAlarmOn(true);
-          try {
-            await axios.post("/api/index", {
-              index: index,
-              userName: name,
-            });
-          } catch (e) {
-            console.log(e);
-          }
+          indexArray.push(index);
         }
+      }
+      try {
+        await axios.post("/api/index", {
+          userName: name,
+          index: indexArray,
+        });
+      } catch (e) {
+        console.log(e);
       }
     };
     letterIndex();
