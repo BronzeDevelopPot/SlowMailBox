@@ -1,14 +1,28 @@
 .arrive_page {
   align-items: center;
-  width:  450px;
-  max-height: 800px;
-  margin-top: 30px;
-  overflow-y: auto;
 
-  img {
-    width: 130px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 15px;
+  // 배경 색 임시 지정
+  background-color: gray;
+
+  .envelope_container {
+    width: 450px;
+    max-height: 800px;
+
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+
+    .envelope_img {
+      display: flex;
+      justify-content: center;
+
+      width: 150px;
+      height: 105px;
+      
+      img {
+        width: 130px;
+        align-self: flex-end;
+      }
+    }
   }
 }
