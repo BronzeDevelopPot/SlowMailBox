@@ -41,21 +41,22 @@ letterRouter.post("/api/index", async (req: Request, res: Response) => {
     const letterRef = doc(collection(database, "slowmailbox", "mailbox", "letters"), userName);
     const letterDoc = await getDoc(letterRef);
 
-    const letterData = letterDoc.data()?.letter || [];
-    const newLetter = letterData[letterIndex];
+    for (let i = 0; i < letterIndex.length; i++) {
+      const letterData = letterDoc.data()?.letter || [];
+      const newLetter = letterData[letterIndex[i]];
 
-    const arriveRef = doc(collection(database, "slowmailbox", "arrive", "letters"), userName);
+      const arriveRef = doc(collection(database, "slowmailbox", "arrive", "letters"), userName);
+      const arriveDoc = await getDoc(arriveRef);
+      const currentLetter = arriveDoc.data()?.letter || [];
 
-    const arriveDoc = await getDoc(arriveRef);
-    const currentletter = arriveDoc.data()?.letter || [];
+      await updateDoc(arriveRef, { letter: [...currentLetter, newLetter] });
 
-    await updateDoc(arriveRef, { letter: [...currentletter, newLetter] });
+      if (letterData.length > letterIndex) {
+        letterData.splice(letterIndex, 1);
+      }
 
-    if (letterData.length > letterIndex) {
-      letterData.splice(letterIndex, 1);
+      await updateDoc(letterRef, { letter: letterData });
     }
-
-    await updateDoc(letterRef, { letter: letterData });
   } catch (e) {
     console.log(e);
     res.status(500).json({ e: "인덱스에 해당하는 편지를 조회하는 데 실패했습니다." });

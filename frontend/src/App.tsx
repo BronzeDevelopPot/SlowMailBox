@@ -1,10 +1,10 @@
-import LoginPage from './Component/LoginPage/LoginPage';
-import MainPage from './Component/MainPage/MainPage';
-import LetterPage from './Component/LetterPage/LetterPage';
-import ArrivePage from './Component/ArrivePage/ArrivePage';
-import styles from './App.module.scss';
+import LoginPage from "./Component/LoginPage/LoginPage";
+import MainPage from "./Component/MainPage/MainPage";
+import LetterPage from "./Component/LetterPage/LetterPage";
+import ArrivePage from "./Component/ArrivePage/ArrivePage";
+import styles from "./App.module.scss";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
         </Routes>
       </div>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default App;
