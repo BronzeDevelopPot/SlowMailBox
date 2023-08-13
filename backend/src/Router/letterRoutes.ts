@@ -38,11 +38,14 @@ letterRouter.post("/api/index", async (req: Request, res: Response) => {
     const letterIndex = req.body.index;
     const userName = req.body.userName;
 
+    letterIndex.sort();
+
     const letterRef = doc(collection(database, "slowmailbox", "mailbox", "letters"), userName);
     const letterDoc = await getDoc(letterRef);
 
+    const letterData = letterDoc.data()?.letter || [];
+
     for (let i = 0; i < letterIndex.length; i++) {
-      const letterData = letterDoc.data()?.letter || [];
       const newLetter = letterData[letterIndex[i]];
 
       const arriveRef = doc(collection(database, "slowmailbox", "arrive", "letters"), userName);
@@ -50,13 +53,16 @@ letterRouter.post("/api/index", async (req: Request, res: Response) => {
       const currentLetter = arriveDoc.data()?.letter || [];
 
       await updateDoc(arriveRef, { letter: [...currentLetter, newLetter] });
+    }
 
-      if (letterData.length > letterIndex) {
-        letterData.splice(letterIndex, 1);
+    for (let i = letterIndex.length - 1; i >= 0; i--) {
+      if (letterData.length > letterIndex[i]) {
+        letterData.splice(letterIndex[i], 1);
       }
 
       await updateDoc(letterRef, { letter: letterData });
     }
+    res.status(200).json({ message: "인덱스에 해당하는 편지를 조회하는 데 성공했습니다." });
   } catch (e) {
     console.log(e);
     res.status(500).json({ e: "인덱스에 해당하는 편지를 조회하는 데 실패했습니다." });
