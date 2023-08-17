@@ -12,9 +12,9 @@ const App = () => {
       <div className={styles.App}>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
-          <Route path="/main" element={<MainPage />}></Route>
-          <Route path="/letter" element={<LetterPage />}></Route>
-          <Route path="/arrive" element={<ArrivePage />}></Route>
+          <Route path="/main/:userName" element={<MainPage />}></Route>
+          <Route path="/letter/:userName" element={<LetterPage />}></Route>
+          <Route path="/arrive/:userName" element={<ArrivePage />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

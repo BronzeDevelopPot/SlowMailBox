@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../Styles/_mainPage.module.scss";
@@ -79,40 +78,40 @@ const MainPage = () => {
     <div className={styles.main_page}>
       <div className={styles.alarm_container}>
         {alarmOn ? (
-          <Link to="/arrive">
-          </Link>
+          <a href={`/arrive/${name}`}>
             <img src="../src/Assets/alarmOn.png" className={styles.alarm} onClick={() => setAlarmOn(false)} />
+          </a>
         ) : (
-          <Link to="/arrive">
-          </Link>
+          <a href={`/arrive/${name}`}>
             <img src="../src/Assets/alarmOff.png" className={styles.alarm} />
+          </a>
         )}
       </div>
       <span className={styles.title}>{name}님의 우체통</span>
       <div className={styles.mail_box}>
         <div className={styles.post_box}>
-          <div className={styles.envelope_box}>
-            {Array.from({ length: 5 }, (_, i) => (
+          {Array.from({ length: 5 }, (_, i) => (
+            <div key={i} className={styles.envelope_box}>
               <div className={styles.envelope_img}>{Envelope(i)}</div>
-            ))}
-          </div>
-          <div className={styles.envelope_box}>
-            {Array.from({ length: 5 }, (_, i) => (
+            </div>
+          ))}
+          {Array.from({ length: 5 }, (_, i) => (
+            <div key={i} className={styles.envelope_box}>
               <div className={styles.envelope_img}>{Envelope(i + 5)}</div>
-            ))}
-          </div>
-          <div className={styles.envelope_box}>
-            {Array.from({ length: 2 }, (_, i) => (
+            </div>
+          ))}
+          {Array.from({ length: 2 }, (_, i) => (
+            <div key={i} className={styles.envelope_box}>
               <div className={styles.envelope_img}>{Envelope(i + 10)}</div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 
       <div className={styles.link_container}>
-        <Link to="/letter">
+        <a href={`/letter/${name}`}>
           <button className={styles.write_button}>편지 남기기</button>
-        </Link>
+        </a>
       </div>
       <button className={styles.share_button}>내 우체통 공유하기 (Link 복사)</button>
     </div>

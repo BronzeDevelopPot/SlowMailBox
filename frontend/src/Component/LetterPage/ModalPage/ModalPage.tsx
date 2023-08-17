@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "../../../Styles/_modalPage.module.scss";
 
 const ModalPage = (_props: any) => {
   const [modal, setModal] = useState<boolean>(true);
   const [fromName, setFromName] = useState<string>("");
+  const [toName, setToName] = useState<string>("");
 
   const onHandleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromName(e.target.value);
@@ -18,6 +18,7 @@ const ModalPage = (_props: any) => {
   const submit = async () => {
     try {
       const response = await axios.get("/api/user");
+      setToName(response.data.name);
 
       await axios.post("/api/send", {
         text: _props.inputText,
@@ -138,11 +139,9 @@ const ModalPage = (_props: any) => {
         </div>
       ) : (
         <div className={styles.modal_container}>
-          <div className={styles.close_button}>
-            <Link to="/main" style={{ textDecoration: "none" }}>
-              X
-            </Link>
-          </div>
+          <a href={`/main/${toName}`} style={{ textDecoration: "none" }}>
+            <div className={styles.close_button}>X</div>
+          </a>
           <div className={styles.complete_ment}>
             편지 전송이 완료되었습니다!
           </div>
@@ -150,9 +149,9 @@ const ModalPage = (_props: any) => {
             나도 추억의 우체통을 만들고 싶다면?
           </div>
           {/* login page로 이동하게 해 둔 상태 (고민해 봐야 함) */}
-          <Link to="/">
-          </Link>
+          <a href="/">
             <img src="../src/Assets/kakaologin_start.png" />
+          </a>
         </div>
       )}
     </div>
