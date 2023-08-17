@@ -56,7 +56,7 @@ kakaoRouter.get("/oauth/callback/kakao", async (req: Request, res: Response) => 
 
   req.session.userData = { _id: user.data.id, name: user.data.kakao_account.profile.nickname };
 
-  res.redirect("http://localhost:4000/main");
+  res.redirect(`http://localhost:4000/main/${req.session.userData.name}`);
 });
 
 /* session에 저장된 사용자 정보 Client 전달 */
