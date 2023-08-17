@@ -70,7 +70,7 @@ const MainPage = () => {
   const Envelope = (monthDif: number) => {
     for (let i = 0; i < monthDifArr.length; i++) {
       if (monthDifArr[i] == monthDif) {
-        return <img src="/src/Assets/envelope_column.png" />;
+        return <img src="../src/Assets/envelope_column.png" />;
       }
     }
   };
@@ -80,12 +80,12 @@ const MainPage = () => {
       <div className={styles.alarm_container}>
         {alarmOn ? (
           <Link to="/arrive">
-            <img src="/src/Assets/alarmOn.png" className={styles.alarm} onClick={() => setAlarmOn(false)} />
           </Link>
+            <img src="../src/Assets/alarmOn.png" className={styles.alarm} onClick={() => setAlarmOn(false)} />
         ) : (
           <Link to="/arrive">
-            <img src="/src/Assets/alarmOff.png" className={styles.alarm} />
           </Link>
+            <img src="../src/Assets/alarmOff.png" className={styles.alarm} />
         )}
       </div>
       <span className={styles.title}>{name}님의 우체통</span>

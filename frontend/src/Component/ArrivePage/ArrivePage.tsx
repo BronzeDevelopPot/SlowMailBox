@@ -58,7 +58,7 @@ const ArrivePage = () => {
         {fromName.map((_, index) => (
           <div key={index} className={styles.envelope_img}>
             <img
-              src="/src/Assets/envelope_row.png"
+              src="../../src/Assets/envelope_row.png"
               onClick={() => handleEnvelopeClick(index)}
             />
           </div>

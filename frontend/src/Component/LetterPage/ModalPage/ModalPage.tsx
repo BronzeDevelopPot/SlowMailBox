@@ -151,8 +151,8 @@ const ModalPage = (_props: any) => {
           </div>
           {/* login page로 이동하게 해 둔 상태 (고민해 봐야 함) */}
           <Link to="/">
-            <img src="./src/Assets/kakaologin_start.png" />
           </Link>
+            <img src="../src/Assets/kakaologin_start.png" />
         </div>
       )}
     </div>
