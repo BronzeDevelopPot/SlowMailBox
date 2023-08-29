@@ -21,8 +21,12 @@ const MainPage = () => {
       const letterResponse = await axios.get(`/api/letter/${userName}`);
       const letterData = letterResponse.data.letter;
 
-      setMonthDifArr(letterData.map((item: { monthDif: number }) => item.monthDif));
-      setArriveDateArr(letterData.map((item: { arriveDate: number }) => item.arriveDate));
+      setMonthDifArr(
+        letterData.map((item: { monthDif: number }) => item.monthDif)
+      );
+      setArriveDateArr(
+        letterData.map((item: { arriveDate: number }) => item.arriveDate)
+      );
 
       return letterData;
     } catch (error) {
@@ -79,7 +83,11 @@ const MainPage = () => {
       <div className={styles.alarm_container}>
         {alarmOn ? (
           <a href={`/arrive/${name}`}>
-            <img src="../src/Assets/alarmOn.png" className={styles.alarm} onClick={() => setAlarmOn(false)} />
+            <img
+              src="../src/Assets/alarmOn.png"
+              className={styles.alarm}
+              onClick={() => setAlarmOn(false)}
+            />
           </a>
         ) : (
           <a href={`/arrive/${name}`}>
@@ -90,21 +98,21 @@ const MainPage = () => {
       <span className={styles.title}>{name}님의 우체통</span>
       <div className={styles.mail_box}>
         <div className={styles.post_box}>
-          {Array.from({ length: 5 }, (_, i) => (
-            <div key={i} className={styles.envelope_box}>
-              <div className={styles.envelope_img}>{Envelope(i)}</div>
-            </div>
-          ))}
-          {Array.from({ length: 5 }, (_, i) => (
-            <div key={i} className={styles.envelope_box}>
-              <div className={styles.envelope_img}>{Envelope(i + 5)}</div>
-            </div>
-          ))}
-          {Array.from({ length: 2 }, (_, i) => (
-            <div key={i} className={styles.envelope_box}>
-              <div className={styles.envelope_img}>{Envelope(i + 10)}</div>
-            </div>
-          ))}
+          <div className={styles.envelope_box}>
+            {[...Array(5)].map((_, index) => (
+              <div key={index} className={styles.envelope_img}>{Envelope(index)}</div>
+            ))}
+          </div>
+          <div className={styles.envelope_box}>
+            {[...Array(5)].map((_, index) => (
+              <div key={index} className={styles.envelope_img}>{Envelope(index + 5)}</div>
+            ))}
+          </div>
+          <div className={styles.envelope_box}>
+            {[...Array(2)].map((_, index) => (
+              <div key={index} className={styles.envelope_img}>{Envelope(index + 10)}</div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -113,7 +121,9 @@ const MainPage = () => {
           <button className={styles.write_button}>편지 남기기</button>
         </a>
       </div>
-      <button className={styles.share_button}>내 우체통 공유하기 (Link 복사)</button>
+      <button className={styles.share_button}>
+        내 우체통 공유하기 (Link 복사)
+      </button>
     </div>
   );
 };
