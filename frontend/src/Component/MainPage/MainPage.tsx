@@ -33,8 +33,7 @@ const MainPage = () => {
   useEffect(() => {
     const mailbox = async () => {
       try {
-        const letterData = await getLetter();
-        console.log("우체통:", letterData);
+        await getLetter();
       } catch (e) {
         console.error("우체통 오류:", e);
       }
@@ -48,19 +47,20 @@ const MainPage = () => {
 
       for (let index = 0; index < arriveDateArr.length; index++) {
         const value: number = arriveDateArr[index];
-        console.log(value, index);
         if (value == today) {
           setAlarmOn(true);
           indexArray.push(index);
         }
       }
-      try {
-        await axios.post("/api/index", {
-          userName: name,
-          index: indexArray,
-        });
-      } catch (e) {
-        console.log(e);
+      if (indexArray.length !== 0) {
+        try {
+          await axios.post("/api/index", {
+            userName: name,
+            index: indexArray,
+          });
+        } catch (e) {
+          console.log(e);
+        }
       }
     };
     letterIndex();
