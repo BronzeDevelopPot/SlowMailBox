@@ -78,6 +78,18 @@ const MainPage = () => {
     }
   };
 
+  const onCopyLink = (): void => {
+    if (!navigator.clipboard) {
+      alert("클립보드 지원 불가 브라우저입니다!")
+    }
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert("우체통 링크 복사 완료!");
+    }).catch((err) => {
+      console.log(err);
+      alert("오류 발생!")
+    })
+  };
+
   return (
     <div className={styles.main_page}>
       <div className={styles.alarm_container}>
@@ -100,17 +112,23 @@ const MainPage = () => {
         <div className={styles.post_box}>
           <div className={styles.envelope_box}>
             {[...Array(5)].map((_, index) => (
-              <div key={index} className={styles.envelope_img}>{Envelope(index)}</div>
+              <div key={index} className={styles.envelope_img}>
+                {Envelope(index)}
+              </div>
             ))}
           </div>
           <div className={styles.envelope_box}>
             {[...Array(5)].map((_, index) => (
-              <div key={index} className={styles.envelope_img}>{Envelope(index + 5)}</div>
+              <div key={index} className={styles.envelope_img}>
+                {Envelope(index + 5)}
+              </div>
             ))}
           </div>
           <div className={styles.envelope_box}>
             {[...Array(2)].map((_, index) => (
-              <div key={index} className={styles.envelope_img}>{Envelope(index + 10)}</div>
+              <div key={index} className={styles.envelope_img}>
+                {Envelope(index + 10)}
+              </div>
             ))}
           </div>
         </div>
@@ -121,7 +139,7 @@ const MainPage = () => {
           <button className={styles.write_button}>편지 남기기</button>
         </a>
       </div>
-      <button className={styles.share_button}>
+      <button className={styles.share_button} onClick={onCopyLink}>
         내 우체통 공유하기 (Link 복사)
       </button>
     </div>
